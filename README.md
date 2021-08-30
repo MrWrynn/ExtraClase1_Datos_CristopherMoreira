@@ -1,18 +1,3 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Para ejecutar el programa se debe ejecutar la ventana1.java y ventana2.java. Para esto considero que la mejor forma es crear una copia de la carpeta y abrir ambas en Visual Studio Code, luego ejecutar una ventana en cada pestaña de VSC.
+Para que que se realice el calculo, es importante que el usuario envíe los datos desde una ventana y desde la otra enviar el mensaje de esta forma ",valor del producto,peso,porcentaje" de esta forma: ",100,200,33" es importante respetar las comas y sobretodo la primera, para que el codigo realice que calculo.
+Tambien es importante que el usuario cambie la ip que está en el archivo cliente.java por la ip (en la carpeta original y la copia) de su computador para que se realice la conexión.
