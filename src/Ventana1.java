@@ -1,6 +1,15 @@
 import java.util.Observable;
 import java.util.Observer;
 
+/**Para las ventanas se utiliza un template de Swing */
+
+
+/**
+ * A continuación se crea la clase ventana y se declara como observador
+ * lo que permite que el servidor (observable) lo actualice 
+ * 
+ */
+
 public class Ventana1 extends javax.swing.JFrame implements Observer { //Al observer se le notifica
 
     public Ventana1() {
@@ -69,14 +78,18 @@ public class Ventana1 extends javax.swing.JFrame implements Observer { //Al obse
 
 
         String mensaje = "1: " + this.txtTextoEnviar.getText();
-
+        /**
+         * A continuación el codigo se encarga de preguntar si el mensaje enviado
+         * tiene el formato de un calculo (",valor,peso,porcentaje") para realizar
+         * el calculo, en caso de no tenerlo solo envía el mensaje.
+         */
         String numero = mensaje;
         if (numero.contains(",")) {
             String[] parts = numero.split(",");
-            String usuario = parts[0]; // 123
-            String valor = parts[1]; // 654321
-            String peso = parts[2]; // 654321
-            String porcentaje = parts[3]; // 654321
+            String usuario = parts[0]; 
+            String valor = parts[1]; 
+            String peso = parts[2]; 
+            String porcentaje = parts[3]; 
 
 
 
@@ -132,7 +145,7 @@ public class Ventana1 extends javax.swing.JFrame implements Observer { //Al obse
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Crea y muestra la ventana */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ventana1().setVisible(true);
@@ -140,15 +153,19 @@ public class Ventana1 extends javax.swing.JFrame implements Observer { //Al obse
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Declaración de variables - no modificar//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtTexto;
     private javax.swing.JTextField txtTextoEnviar;
-    // End of variables declaration//GEN-END:variables
+    /**  Fin de la declaración de variables//GEN-END:variables */
 
-    @Override           //Clase q
-    public void update(Observable o, Object arg) { //Con este update llegan los metodos del servidor | Observable o: Object arg: Mensaje
+    /**
+     * A continuación, el update permite que los metodos del servidor se actualicen en la ventana
+     *  El Object arg es el mensaje
+     */
+    @Override
+    public void update(Observable o, Object arg) { 
         this.txtTexto.append((String) arg);
     }
 

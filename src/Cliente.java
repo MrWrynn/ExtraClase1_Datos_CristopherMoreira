@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Cliente implements Runnable { //No hace falta el observable, este solo
+public class Cliente implements Runnable {
 
     private int puerto;
     private String mensaje;
@@ -17,18 +17,17 @@ public class Cliente implements Runnable { //No hace falta el observable, este s
 
     @Override
     public void run() {
-        //Host del servidor
-        final String HOST = "192.168.1.5";
-        //Puerto del servidor
+        /**Host del servidor */
+        final String HOST = "192.168.1.5"; /** Se debe cambiar esta ip por la ip del usuario */
         DataOutputStream out;
 
         try {
-            //Creo el socket para conectarme con el cliente
+            /**Se crea el socket para hacer la conexión */
             Socket sc = new Socket(HOST, puerto);
 
             out = new DataOutputStream(sc.getOutputStream());
 
-            //Envio un mensaje, el servidor se encarga de procesar el cambio
+            /**Envio un mensaje, el servidor se encarga de procesar el cambio */
             out.writeUTF(mensaje);
 
             sc.close();

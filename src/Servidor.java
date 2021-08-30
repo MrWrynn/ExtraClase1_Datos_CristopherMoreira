@@ -23,33 +23,38 @@ public class Servidor extends Observable implements Runnable {
         DataInputStream in;
 
         try {
-            //Creamos el socket del servidor
+            /**Se crea el socket del servidor */
             servidor = new ServerSocket(puerto);
             System.out.println("Servidor iniciado");
 
-            //Siempre estara escuchando peticiones
+            /**El while true es para que siempre esté escuchando peticiones */
             while (true) {
 
-                //Espero a que un cliente se conecte
+                /**Espera a que un cliente se conecte */
                 sc = servidor.accept();
 
                 System.out.println("Cliente conectado");
                 in = new DataInputStream(sc.getInputStream());
                
-                //Leo el mensaje que me envia
+                /**Lee el mensaje enviado */
                 String mensaje = in.readUTF();
                 
                 System.out.println(mensaje);
                 
                 
+                /**
+                 * A continuación el codigo se encarga de preguntar si el mensaje enviado
+                 * tiene el formato de un calculo (",valor,peso,porcentaje") para realizar
+                 * el calculo, en caso de no tenerlo solo envía el mensaje.
+                 */
 
                 String numero = mensaje;
                 if (numero.contains(",")) {
                     String[] parts = numero.split(",");
-                    String usuario = parts[0]; // 123
-                    String valor = parts[1]; // 654321
-                    String peso = parts[2]; // 654321
-                    String porcentaje = parts[3]; // 654321
+                    String usuario = parts[0]; 
+                    String valor = parts[1]; 
+                    String peso = parts[2];
+                    String porcentaje = parts[3];
         
 
 
@@ -68,15 +73,14 @@ public class Servidor extends Observable implements Runnable {
                     }
                 }
                 
-                
-
-
-
+                /**el notifyObservers es el encargado de hacer llegar el mensaje enviado por la ventana emisora
+                 * hasta la ventana receptora
+                 */
                 this.setChanged();
                 this.notifyObservers(mensaje + "\n");
                 this.clearChanged();
                 
-                //Cierro el socket
+                /**Para cerrar el socket */
                 sc.close();
                 System.out.println("Cliente desconectado");
 
